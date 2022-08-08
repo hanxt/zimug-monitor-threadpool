@@ -1,3 +1,5 @@
+![](https://cdn.zimug.com/wx-zimug.png)
+
 在开发spring boot应用服务的时候，难免会使用到异步任务及线程池。spring boot的线程池是可以自定义的，所以我们经常会在项目里面看到类似于下面这样的代码
 ~~~
 @Bean
@@ -92,5 +94,7 @@ configurableBeanFactory.registerSingleton(pool.getPoolId(), taskExecutor);
 ~~~
 ThreadPoolTaskExecutor memThreadPool = (ThreadPoolTaskExecutor) applicationContext.getBean(poolModel.getPoolId());
 ~~~
+
+![](https://cdn.zimug.com/wx-zimug.png)
 
 
