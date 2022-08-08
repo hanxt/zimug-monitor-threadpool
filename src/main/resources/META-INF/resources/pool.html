@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线程池</title>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js "></script>
+</head>
+<body>
+
+    <table width="800" border="1" cellspacing="0">
+        <thead>
+        <tr>
+            <th>线程池ID</th>
+            <th>描述</th>
+            <th>初始化线程数</th>
+            <th>最大线程数</th>
+            <th>任务等待队列容量</th>
+            <th>当前线程池的容量</th>
+            <th>当前活跃线程数</th>
+            <th>线程池活跃线程最大峰值</th>
+            <th>当前任务等待队列剩余的容量</th>
+            <th>已运行完成的任务数量</th>
+        </tr>
+        </thead>
+        <tbody id="tbMain"></tbody>
+    </table>
+
+
+    <script type="text/javascript">
+
+        window.onload = function(){
+            let tbody = document.getElementById('tbMain');
+
+            $.ajax({
+                type:"get",
+                url:"/pool/list",
+                dataType:"json",
+                cache: false,
+                success:function(data){
+                    for(let i = 0;i < data.length; i++){ //遍历一下json数据
+                        let trow = getDataRow(data[i]); //定义一个方法,返回tr数据
+                        tbody.appendChild(trow);
+                    }
+                }
+            });
+        }
+
+        function getDataRow(h){
+            var row = document.createElement('tr'); //创建行
+
+            var cell1 = document.createElement('td'); //创建第一列id
+            cell1.innerHTML = h.poolId; //填充数据
+            row.appendChild(cell1); //加入行  ，下面类似
+
+            var cell2 = document.createElement('td');//创建第二列name
+            cell2.innerHTML = h.poolName;
+            row.appendChild(cell2);
+
+            var cell3 = document.createElement('td');//创建第三列job
+            cell3.innerHTML = h.coreSize;
+            row.appendChild(cell3);
+
+            var cell4 = document.createElement('td');//创建第三列job
+            cell4.innerHTML = h.maxSize;
+            row.appendChild(cell4);
+
+            var cell5 = document.createElement('td');//创建第三列job
+            cell5.innerHTML = h.queueCapacity;
+            row.appendChild(cell5);
+
+            var cell6 = document.createElement('td');//创建第三列job
+            cell6.innerHTML = h.poolSize;
+            row.appendChild(cell6);
+
+            var cell7 = document.createElement('td');//创建第三列job
+            cell7.innerHTML = h.activeCount;
+            row.appendChild(cell7);
+
+            var cell9 = document.createElement('td');//创建第三列job
+            cell9.innerHTML = h.largestPoolSize;
+            row.appendChild(cell9);
+
+
+            var cell10 = document.createElement('td');//创建第三列job
+            cell10.innerHTML = h.remainingCapacity;
+            row.appendChild(cell10);
+
+            var cell8 = document.createElement('td');//创建第三列job
+            cell8.innerHTML = h.completedTaskCount;
+            row.appendChild(cell8);
+
+            return row; //返回tr数据
+        }
+    </script>
+</body>
+</html>
