@@ -28,7 +28,7 @@ public Executor taskExecutor() {
 
 
 ## 一、易集成、易配置
-通过上文的项目地址获取源码，然后maven编译install本地m2仓库。然后通过下面的maven坐标引入
+该项目release jar包我已经上传到仓库，直接通过下面的maven坐标引入
 ~~~
 <dependency>
     <groupId>com.zimug</groupId>
