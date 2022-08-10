@@ -28,7 +28,7 @@ public Executor taskExecutor() {
 
 
 ## 一、易集成、易配置
-该项目release jar包我已经上传到仓库，直接通过下面的maven坐标引入
+该项目release jar包我已经上传到中央仓库，直接通过下面的maven坐标引入
 ~~~
 <dependency>
     <groupId>com.zimug</groupId>
